@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="KAЯMA Streetwear — producto"
+  >
+
+  <title>KAЯMA | Producto</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <a href="index.html" class="brand">
+
+      <img
+        src="assets/logo-karma.png"
+        alt="KAЯMA Streetwear"
+      >
+
+    </a>
+
+    <a href="index.html" class="btn btn-secondary">
+      ← Volver a la tienda
+    </a>
+
+  </header>
+
+
+  <main class="product-page">
+
+    <section class="product-detail">
+
+      <div class="product-detail-image">
+
+  <div class="product-detail-gallery">
+
+  <button
+    class="detail-image-arrow left"
+    onclick="changeDetailImage(-1)"
+  >
+    ‹
+  </button>
+
+  <img
+    id="productDetailImage"
+    src="assets/products/front1.png"
+    alt="Camiseta Oversize ETERNAL LOOP"
+  >
+
+  <button
+    class="detail-image-arrow right"
+    onclick="changeDetailImage(1)"
+  >
+    ›
+  </button>
+
+</div>
+
+<div class="product-detail-thumbnails" id="productDetailThumbnails"></div>
+
+</div>
+
+
+      <div class="product-detail-info">
+
+        <span class="eyebrow">
+          KAЯMA / PRODUCTO
+        </span>
+
+        <h1 id="productName">
+  ETERNAL LOOP
+</h1>
+
+        <div class="product-detail-price" id="productPrice">
+  S/ 54.90
+</div>
+
+        <p class="product-description">
+          Camiseta oversized inspirada en el concepto de
+          movimiento, energía y el ciclo del karma.
+          Una pieza urbana diseñada para destacar.
+        </p>
+
+
+        <div class="detail-section">
+
+          <span>
+            Talla
+          </span>
+
+          <div class="detail-sizes">
+
+  <button type="button" onclick="selectDetailSize(this)">S</button>
+  <button type="button" onclick="selectDetailSize(this)">M</button>
+  <button type="button" onclick="selectDetailSize(this)">L</button>
+  <button type="button" onclick="selectDetailSize(this)">XL</button>
+
+</div>
+        </div>
+
+
+        <button
+  class="btn btn-primary product-detail-add"
+  onclick="addProductToCart()"
+>
+  Agregar al carrito
+</button>
+
+
+        <button
+  class="btn btn-secondary product-detail-whatsapp"
+  onclick="buyProductWhatsApp()"
+>
+  Comprar por WhatsApp
+</button>
+
+        <div class="product-details-extra">
+
+  <h3>DETALLES DEL PRODUCTO</h3>
+
+  <ul>
+    <li>100% algodón</li>
+    <li>Corte oversized</li>
+    <li>Tela heavyweight</li>
+    <li>Estampado premium</li>
+    <li>Envíos a todo Perú</li>
+  </ul>
+
+</div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <p>
+      © 2026 KAЯMA STREETWEAR LIMA
+    </p>
+
+  </footer>
+<script>
+
+function selectDetailSize(button) {
+
+  const buttons = document.querySelectorAll(".detail-sizes button");
+
+  buttons.forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  button.classList.add("selected");
+
+}
+
+function changeDetailImage(direction) {
+  const image = document.getElementById("productDetailImage");
+
+  const images = currentProduct.images;
+
+  let currentIndex = images.findIndex(
+  imagePath => image.src.endsWith(imagePath)
+);
+  if (currentIndex === -1) {
+    currentIndex = 0;
+  }
+
+  let newIndex = currentIndex + direction;
+
+  if (newIndex >= images.length) {
+    newIndex = 0;
+  }
+
+  if (newIndex < 0) {
+    newIndex = images.length - 1;
+  }
+
+  image.src = images[newIndex];
+}
+
+function selectDetailImage(index) {
+
+  const image =
+    document.getElementById("productDetailImage");
+
+  image.src =
+    currentProduct.images[index];
+
+  const thumbnails =
+    document.querySelectorAll(".product-detail-thumbnail");
+
+  thumbnails.forEach((thumbnail, thumbnailIndex) => {
+
+    thumbnail.classList.toggle(
+      "active",
+      thumbnailIndex === index
+    );
+
+  });
+
+}
+
+function buyProductWhatsApp() {
+
+  
+
+  const selectedSize =
+    document.querySelector(".detail-sizes button.selected");
+
+  if (!selectedSize) {
+
+    alert(
+      "Selecciona una talla antes de comprar por WhatsApp."
+    );
+
+    return;
+  }
+
+  const size =
+    selectedSize.textContent;
+
+  const message =
+    "Hola KAЯMA 👋\n\n" +
+    "Quiero comprar este producto:\n\n" +
+    "Producto: " + currentProduct.name + "\n" +
+    "Talla: " + size + "\n" +
+    "Precio: " + currentProduct.price + "\n\n" +
+    "¿Cómo puedo realizar el pedido?";
+
+  const phone =
+    "51938746323";
+
+  const whatsappURL =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.location.href =
+    whatsappURL;
+
+}
+
+function addProductToCart() {
+
+  const selectedSize = document.querySelector(
+    ".detail-sizes button.selected"
+  );
+
+  if (!selectedSize) {
+
+    alert("Selecciona una talla antes de agregar la camiseta.");
+
+    return;
+  }
+
+  const size = selectedSize.textContent;
+
+  const currentProductId =
+  new URLSearchParams(window.location.search).get("producto") || "4";
+
+window.location.href =
+  "index.html?producto=" +
+  currentProductId +
+  "&talla=" +
+  encodeURIComponent(size);
+
+}
+
+const productPageData = {
+  1: {
+    name: "Camiseta Oversize 'BUTTERFLY FLAMES'",
+    price: "S/ 49.90",
+    images: [
+      "assets/products/front1.png",
+      "assets/products/back1.png"
+    ]
+  },
+
+  2: {
+    name: "Camiseta Oversize 'VORTEX KARMA'",
+    price: "S/ 49.90",
+    images: [
+      "assets/products/front2.png",
+      "assets/products/back2.png"
+    ]
+  },
+
+  3: {
+    name: "Camiseta Oversize 'DARK KARMA'",
+    price: "S/ 54.90",
+    images: [
+      "assets/products/front3.png",
+      "assets/products/back3.png"
+    ]
+  },
+
+  4: {
+    name: "Camiseta Oversize 'ETERNAL LOOP'",
+    price: "S/ 54.90",
+    images: [
+      "assets/products/front4.png",
+      "assets/products/back4.png"
+    ]
+  },
+
+  5: {
+    name: "Camiseta Oversize 'VOID'",
+    price: "S/ 49.90",
+    images: [
+      "assets/products/front5.png",
+      "assets/products/back5.png"
+    ]
+  },
+
+  6: {
+    name: "Camiseta Oversize 'REBIRTH'",
+    price: "S/ 59.90",
+    images: [
+      "assets/products/front6.png",
+      "assets/products/back6.png"
+    ]
+  }
+};
+
+
+const pageParams = new URLSearchParams(
+  window.location.search
+);
+
+const pageProductId = pageParams.get("producto");
+
+const currentProduct =
+  productPageData[pageProductId] ||
+  productPageData[4];
+
+document.getElementById("productName").textContent =
+  currentProduct.name;
+
+document.getElementById("productPrice").textContent =
+  currentProduct.price;
+
+const productDetailImage =
+  document.getElementById("productDetailImage");
+
+const productDetailThumbnails =
+  document.getElementById("productDetailThumbnails");
+
+productDetailImage.src =
+  currentProduct.images[0];
+
+productDetailImage.alt =
+  currentProduct.name;
+
+productDetailThumbnails.innerHTML = "";
+
+currentProduct.images.forEach((image, index) => {
+
+  const thumbnail = document.createElement("button");
+
+  thumbnail.className =
+    "product-detail-thumbnail";
+
+  if (index === 0) {
+    thumbnail.classList.add("active");
+  }
+
+  thumbnail.innerHTML =
+    `<img src="${image}" alt="${currentProduct.name}">`;
+
+  thumbnail.addEventListener("click", () => {
+    selectDetailImage(index);
+  });
+
+  productDetailThumbnails.appendChild(thumbnail);
+
+});
+
+</script>
+</body>
+
+</html>

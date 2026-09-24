@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KARMA — tienda de ropa streetwear oversized.">
+  <title>KARMA | Streetwear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+  <a href="#" class="brand">
+  <img src="assets/logo-karma.png" alt="KAЯMA Streetwear">
+</a>
+
+    <nav class="nav-links">
+      <a href="#coleccion">Colección Oversize</a>
+      <a href="#filosofia">Filosofía</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button class="cart-button" id="cartButton" aria-label="Abrir carrito">
+      🛍 <span>Carrito</span>
+      <b id="cartCount">0</b>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="hero-badge">EDICIÓN EXCLUSIVA · HEAVYWEIGHT OVERSIZE</div>
+
+      <h1>DARKNESS <span>&amp; STRUCTURE</span></h1>
+
+      <p>
+        Camisetas oversized de alta densidad con diseños streetwear.
+        Estética imponente, cortes amplios y acabados premium diseñados en Lima, Perú.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#coleccion" class="btn btn-primary">Ver Colección Completa</a>
+        <a href="#contacto" class="btn btn-secondary">◉ Asesoría WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- COLECCIÓN -->
+    <section class="collection" id="coleccion">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">KARMA / 001</span>
+          <h2>Tu diseño. Tu energía.</h2>
+        </div>
+        <p>Explora nuestros primeros diseños.</p>
+      </div>
+
+      <div class="products" id="products"></div>
+    </section>
+
+    <!-- FILOSOFÍA -->
+    <section class="philosophy" id="filosofia">
+      <span class="eyebrow">FILOSOFÍA KARMA</span>
+      <h2>Todo vuelve. Todo gira.</h2>
+      <p>
+        KARMA nace de una idea simple: nuestras acciones, emociones y energía
+        siempre encuentran una forma de regresar. La ropa representa esa actitud:
+        piezas fuertes, modernas y hechas para destacar.
+      </p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+      <div>
+        <span class="eyebrow">CONTACTO</span>
+        <h2>¿Tienes una pregunta?</h2>
+        <p>Escríbenos para consultar tallas, diseños y pedidos.</p>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/51999999999" target="_blank" rel="noopener">
+        WhatsApp
+      </a>
+    </section>
+  </main>
+
+  <!-- MINI CARRITO -->
+  <aside class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h3>Tu carrito</h3>
+      <button id="closeCart">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items">
+      <p class="empty-cart">Tu carrito está vacío.</p>
+    </div>
+    <div class="cart-footer">
+      <div><span>Total</span><strong id="cartTotal">S/ 0.00</strong></div>
+      <button class="btn btn-primary checkout">Continuar pedido</button>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+<!-- VISOR DE PRODUCTO -->
+<div class="product-modal" id="productModal">
+
+  <button class="product-modal-close" id="productModalClose">
+    ✕
+  </button>
+
+  <img id="productModalImage" src="" alt="Producto">
+
+</div>
+<div class="payment-modal" id="paymentModal">
+
+  <div class="payment-box">
+
+    <button
+      class="payment-close"
+      id="paymentClose"
+    >
+      ✕
+    </button>
+
+    <span class="eyebrow">
+      KAЯMA / PAGO
+    </span>
+
+    <h2>Realiza tu pago</h2>
+
+    <p class="payment-intro">
+      Escanea el código QR con Yape o realiza el pago al número indicado.
+    </p>
+
+    <img
+      src="assets/payment/qr-yape.jpeg"
+      alt="QR de Yape KAЯMA"
+      class="yape-qr"
+    >
+
+    <div class="payment-data">
+
+      <div>
+        <span>Yape</span>
+        <strong>938 746 323</strong>
+      </div>
+
+      <div>
+        <span>Titular</span>
+        <strong>Jefferson Sullon</strong>
+      </div>
+
+    </div>
+<div class="customer-data">
+
+  <h3>Datos de entrega</h3>
+
+  <input
+    type="text"
+    id="customerName"
+    placeholder="Nombre completo"
+  >
+
+  <input
+    type="tel"
+    id="customerPhone"
+    placeholder="Número de celular"
+  >
+
+  <textarea
+    id="customerAddress"
+    placeholder="Dirección de entrega"
+    rows="3"
+  ></textarea>
+
+</div>
+    <div class="payment-total">
+      <span>Total a pagar</span>
+      <strong id="paymentTotal">S/ 0.00</strong>
+    </div>
+
+    <button
+      class="btn btn-primary"
+      id="paymentDone"
+    >
+      Ya realicé el pago
+    </button>
+
+  </div>
+
+</div>
+  <footer>
+    <p>© 2026 KARMA STREETWEAR LIMA</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
