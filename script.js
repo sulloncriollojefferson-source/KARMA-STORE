@@ -1,7 +1,7 @@
 const products = [
   {
     id: 1,
-    name: "Camiseta Oversize 'BUTTERFLY FLAMES'",
+    name: "Camiseta Oversize Cyber Dominance'",
     price: 49.90,
     tag: "CLÁSICO",
     images: [
@@ -11,7 +11,7 @@ const products = [
   },
   {
     id: 2,
-    name: "Camiseta Oversize 'VORTEX KARMA'",
+    name: "Camiseta Oversize Venom Web'",
     price: 49.90,
     tag: "ESENCIAL",
     images: [
@@ -21,7 +21,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Camiseta Oversize 'DARK KARMA'",
+    name: "Camiseta Oversize Ethereal Flame'",
     price: 54.90,
     tag: "NUEVO",
     images: [
@@ -31,7 +31,7 @@ const products = [
   },
     {
   id: 4,
-  name: "Camiseta Oversize 'ETERNAL LOOP'",
+  name: "Camiseta Oversize Midnight Kyoto'",
   price: 54.90,
   tag: "LIMITADO",
   images: [
@@ -41,7 +41,7 @@ const products = [
 },
 {
   id: 5,
-  name: "Camiseta Oversize 'VOID'",
+  name: "Camiseta Oversize Vintage Vibes'",
   price: 49.90,
   tag: "STREET",
   images: [
@@ -51,7 +51,7 @@ const products = [
 },
 {
   id: 6,
-  name: "Camiseta Oversize 'REBIRTH'",
+  name: "Camiseta Oversize Dark Trap'",
   price: 59.90,
   tag: "PREMIUM",
   images: [
