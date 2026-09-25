@@ -2083,4 +2083,35 @@ footer {
 
   box-shadow:
     0 0 8px rgba(34, 211, 102, 0.4);
+} 
+
+@media (max-width: 700px) {
+
+  .product-detail {
+    grid-template-columns: 1fr !important;
+    gap: 35px !important;
+  }
+
+  .product-detail-image {
+    height: 500px !important;
+    width: 100% !important;
+  }
+
+  .product-detail-gallery {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .product-detail-gallery img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
 }
