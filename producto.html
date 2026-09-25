@@ -126,6 +126,49 @@
 </div>
         </div>
 
+        <div class="detail-section">
+  <span>Color</span>
+
+  <div class="detail-colors">
+
+    <button
+      type="button"
+      class="color-option"
+      onclick="selectDetailColor(this)"
+    >
+      <span class="color-circle color-black"></span>
+      <span>Negro</span>
+    </button>
+
+    <button
+      type="button"
+      class="color-option"
+      onclick="selectDetailColor(this)"
+    >
+      <span class="color-circle color-white"></span>
+      <span>Blanco</span>
+    </button>
+
+    <button
+      type="button"
+      class="color-option"
+      onclick="selectDetailColor(this)"
+    >
+      <span class="color-circle color-beige"></span>
+      <span>Beige</span>
+    </button>
+
+    <button
+      type="button"
+      class="color-option"
+      onclick="selectDetailColor(this)"
+    >
+      <span class="color-circle color-karma"></span>
+      <span>Verde KAЯMA</span>
+    </button>
+
+  </div>
+</div>
 
         <button
   class="btn btn-primary product-detail-add"
@@ -159,6 +202,13 @@
       </div>
 
     </section>
+<div class="product-navigation">
+  <a href="#" id="previousProduct">← Producto anterior</a>
+
+  <span>KAЯMA / COLECCIÓN</span>
+
+  <a href="#" id="nextProduct">Siguiente producto →</a>
+</div>
 
   </main>
 
@@ -172,6 +222,25 @@
   </footer>
 <script>
 
+function showKarmaNotification(title, text) {
+  const notification = document.getElementById("karmaNotification");
+  const notificationTitle =
+    document.getElementById("karmaNotificationTitle");
+  const notificationText =
+    document.getElementById("karmaNotificationText");
+
+  notificationTitle.textContent = title;
+  notificationText.textContent = text;
+
+  notification.classList.add("show");
+
+  clearTimeout(window.karmaNotificationTimer);
+
+  window.karmaNotificationTimer = setTimeout(() => {
+    notification.classList.remove("show");
+  }, 2800);
+}
+
 function selectDetailSize(button) {
 
   const buttons = document.querySelectorAll(".detail-sizes button");
@@ -182,6 +251,19 @@ function selectDetailSize(button) {
 
   button.classList.add("selected");
 
+}
+
+function selectDetailColor(button) {
+  const buttons = document.querySelectorAll(".color-option");
+
+  buttons.forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  button.classList.add("selected");
+
+  button.dataset.selectedColor =
+    button.querySelector("span:last-child").textContent;
 }
 
 function changeDetailImage(direction) {
@@ -239,14 +321,12 @@ function buyProductWhatsApp() {
     document.querySelector(".detail-sizes button.selected");
 
   if (!selectedSize) {
-
-    alert(
-      "Selecciona una talla antes de comprar por WhatsApp."
-    );
-
-    return;
-  }
-
+  showKarmaNotification(
+    "Selecciona una talla",
+    "Elige una talla antes de continuar."
+  );
+  return;
+}
   const size =
     selectedSize.textContent;
 
@@ -278,29 +358,50 @@ function addProductToCart() {
     ".detail-sizes button.selected"
   );
 
+  const selectedColor = document.querySelector(
+    ".color-option.selected"
+  );
+
   if (!selectedSize) {
 
-    alert("Selecciona una talla antes de agregar la camiseta.");
+    showKarmaNotification(
+      "Selecciona una talla",
+      "Elige una talla antes de continuar."
+    );
+
+    return;
+  }
+
+  if (!selectedColor) {
+
+    showKarmaNotification(
+      "Selecciona un color",
+      "Elige un color antes de continuar."
+    );
 
     return;
   }
 
   const size = selectedSize.textContent;
 
+  const color =
+    selectedColor.querySelector("span:last-child").textContent;
+
   const currentProductId =
-  new URLSearchParams(window.location.search).get("producto") || "4";
+    new URLSearchParams(window.location.search).get("producto") || "4";
 
-window.location.href =
-  "index.html?producto=" +
-  currentProductId +
-  "&talla=" +
-  encodeURIComponent(size);
-
+  window.location.href =
+    "index.html?producto=" +
+    currentProductId +
+    "&talla=" +
+    encodeURIComponent(size) +
+    "&color=" +
+    encodeURIComponent(color);
 }
 
 const productPageData = {
   1: {
-    name: "Camiseta Oversize 'BUTTERFLY FLAMES'",
+    name: "Camiseta Oversize Cyber Dominance",
     price: "S/ 49.90",
     images: [
       "assets/products/front1.png",
@@ -309,7 +410,7 @@ const productPageData = {
   },
 
   2: {
-    name: "Camiseta Oversize 'VORTEX KARMA'",
+    name: "Camiseta Oversize Venom Web",
     price: "S/ 49.90",
     images: [
       "assets/products/front2.png",
@@ -318,7 +419,7 @@ const productPageData = {
   },
 
   3: {
-    name: "Camiseta Oversize 'DARK KARMA'",
+    name: "Camiseta Oversize Ethereal Flame",
     price: "S/ 54.90",
     images: [
       "assets/products/front3.png",
@@ -327,7 +428,7 @@ const productPageData = {
   },
 
   4: {
-    name: "Camiseta Oversize 'ETERNAL LOOP'",
+    name: "Camiseta Oversize Midnight Kyoto",
     price: "S/ 54.90",
     images: [
       "assets/products/front4.png",
@@ -336,7 +437,7 @@ const productPageData = {
   },
 
   5: {
-    name: "Camiseta Oversize 'VOID'",
+    name: "Camiseta Oversize Vintage Vibes",
     price: "S/ 49.90",
     images: [
       "assets/products/front5.png",
@@ -345,7 +446,7 @@ const productPageData = {
   },
 
   6: {
-    name: "Camiseta Oversize 'REBIRTH'",
+    name: "Camiseta Oversize Dark Trap",
     price: "S/ 59.90",
     images: [
       "assets/products/front6.png",
@@ -380,6 +481,24 @@ const productDetailThumbnails =
 productDetailImage.src =
   currentProduct.images[0];
 
+  productDetailImage.addEventListener("mousemove", (event) => {
+
+  const rect = productDetailImage.getBoundingClientRect();
+
+  const x = ((event.clientX - rect.left) / rect.width) * 100;
+  const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+  productDetailImage.style.transformOrigin = `${x}% ${y}%`;
+  productDetailImage.style.transform = "scale(1.7)";
+});
+
+productDetailImage.addEventListener("mouseleave", () => {
+
+  productDetailImage.style.transformOrigin = "center center";
+  productDetailImage.style.transform = "scale(1)";
+
+});
+
 productDetailImage.alt =
   currentProduct.name;
 
@@ -407,7 +526,45 @@ currentProduct.images.forEach((image, index) => {
 
 });
 
+const previousProduct =
+  document.getElementById("previousProduct");
+
+const nextProduct =
+  document.getElementById("nextProduct");
+
+let currentProductNumber =
+  Number(pageProductId) || 4;
+
+if (currentProductNumber <= 1) {
+  previousProduct.style.visibility = "hidden";
+} else {
+  previousProduct.href =
+    "producto.html?producto=" +
+    (currentProductNumber - 1);
+}
+
+if (currentProductNumber >= 6) {
+  nextProduct.style.visibility = "hidden";
+} else {
+  nextProduct.href =
+    "producto.html?producto=" +
+    (currentProductNumber + 1);
+}
+
 </script>
 </body>
+
+<div class="karma-notification" id="karmaNotification">
+  <div class="karma-notification-icon">!</div>
+
+  <div>
+    <strong id="karmaNotificationTitle">Selecciona una talla</strong>
+    <span id="karmaNotificationText">
+      Elige una talla antes de continuar.
+    </span>
+  </div>
+</div>
+
+<div class="product-page-intro"></div>
 
 </html>
