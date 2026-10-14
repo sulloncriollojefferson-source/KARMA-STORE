@@ -1,63 +1,63 @@
 const products = [
   {
     id: 1,
-name: "Camiseta Oversize Cyber Dominance",
-price: 49.90,
-tag: "CLÁSICO",
-images: [
-  "assets/products/front1.png",
-  "assets/products/back1.png"
-]
+    name: "Camiseta Oversize 'BUTTERFLY FLAMES'",
+    price: 49.90,
+    tag: "CLÁSICO",
+    images: [
+      "assets/products/front1.png",
+      "assets/products/back1.png"
+    ]
+  },
+  {
+    id: 2,
+    name: "Camiseta Oversize 'VORTEX KARMA'",
+    price: 49.90,
+    tag: "ESENCIAL",
+    images: [
+      "assets/products/front2.png",
+      "assets/products/back2.png"
+    ]
+  },
+  {
+    id: 3,
+    name: "Camiseta Oversize 'DARK KARMA'",
+    price: 54.90,
+    tag: "NUEVO",
+    images: [
+      "assets/products/front3.png",
+      "assets/products/back3.png"
+    ]
+  },
+    {
+  id: 4,
+  name: "Camiseta Oversize 'ETERNAL LOOP'",
+  price: 54.90,
+  tag: "LIMITADO",
+  images: [
+    "assets/products/front4.png",
+    "assets/products/back4.png"
+  ]
 },
 {
-id: 2,
-name: "Camiseta Oversize Venom Web",
-price: 49.90,
-tag: "ESENCIAL",
-images: [
-  "assets/products/front2.png",
-  "assets/products/back2.png"
-]
+  id: 5,
+  name: "Camiseta Oversize 'VOID'",
+  price: 49.90,
+  tag: "STREET",
+  images: [
+    "assets/products/front5.png",
+    "assets/products/back5.png"
+  ]
 },
 {
-id: 3,
-name: "Camiseta Oversize Ethereal Flame",
-price: 54.90,
-tag: "NUEVO",
-images: [
-  "assets/products/front3.png",
-  "assets/products/back3.png"
-]
-},
-{
-id: 4,
-name: "Camiseta Oversize Midnight Kyoto",
-price: 54.90,
-tag: "LIMITADO",
-images: [
-  "assets/products/front4.png",
-  "assets/products/back4.png"
-]
-},
-{
-id: 5,
-name: "Camiseta Oversize Vintage Vibes",
-price: 49.90,
-tag: "STREET",
-images: [
-  "assets/products/front5.png",
-  "assets/products/back5.png"
-]
-},
-{
-id: 6,
-name: "Camiseta Oversize Dark Trap",
-price: 59.90,
-tag: "PREMIUM",
-images: [
-  "assets/products/front6.png",
-  "assets/products/back6.png"
-]
+  id: 6,
+  name: "Camiseta Oversize 'REBIRTH'",
+  price: 59.90,
+  tag: "PREMIUM",
+  images: [
+    "assets/products/front6.png",
+    "assets/products/back6.png"
+  ]
 }
 ];
 
@@ -129,41 +129,15 @@ function renderProducts() {
           <h3>${product.name}</h3>
 
           <div class="sizes">
-  <span>Talla:</span>
 
-  <button class="size" onclick="selectSize(this, 'S')">S</button>
-  <button class="size" onclick="selectSize(this, 'M')">M</button>
-  <button class="size" onclick="selectSize(this, 'L')">L</button>
-  <button class="size" onclick="selectSize(this, 'XL')">XL</button>
-</div>
+            <span>Talla:</span>
 
-<div class="product-colors">
-  <span>Color:</span>
+            <button class="size" onclick="selectSize(this, 'S')">S</button>
+            <button class="size" onclick="selectSize(this, 'M')">M</button>
+            <button class="size" onclick="selectSize(this, 'L')">L</button>
+            <button class="size" onclick="selectSize(this, 'XL')">XL</button>
 
-  <button
-    class="store-color color-black"
-    title="Negro"
-    onclick="selectStoreColor(this, 'Negro')"
-  ></button>
-
-  <button
-    class="store-color color-white"
-    title="Blanco"
-    onclick="selectStoreColor(this, 'Blanco')"
-  ></button>
-
-  <button
-    class="store-color color-beige"
-    title="Beige"
-    onclick="selectStoreColor(this, 'Beige')"
-  ></button>
-
-  <button
-    class="store-color color-karma"
-    title="Verde KAЯMA"
-    onclick="selectStoreColor(this, 'Verde KAЯMA')"
-  ></button>
-</div>
+          </div>
 
           <div class="product-meta">
 
@@ -252,96 +226,44 @@ function selectSize(button, size) {
   button.classList.add("selected");
 }
 
-function selectStoreColor(button, color) {
-
-  const productCard = button.closest(".product");
-
-  if (!productCard) return;
-
-  const buttons =
-    productCard.querySelectorAll(".store-color");
-
-  buttons.forEach(btn => {
-    btn.classList.remove("selected");
-  });
-
-  button.classList.add("selected");
-
-  button.dataset.selectedColor = color;
-}
-
-function showKarmaNotification(title, text) {
-
-  const notification =
-    document.getElementById("karmaNotification");
-
-  const notificationTitle =
-    document.getElementById("karmaNotificationTitle");
-
-  const notificationText =
-    document.getElementById("karmaNotificationText");
-
-  if (!notification) return;
-
-  notificationTitle.textContent = title;
-  notificationText.textContent = text;
-
-  notification.classList.add("show");
-
-  clearTimeout(window.karmaNotificationTimer);
-
-  window.karmaNotificationTimer = setTimeout(() => {
-    notification.classList.remove("show");
-  }, 2800);
-}
 
 function addToCart(id) {
+
   const product = products.find(p => p.id === id);
 
   const productCards = document.querySelectorAll(".product");
+
   const productCard = productCards[id - 1];
 
-  const selectedSize =
-    productCard.querySelector(".size.selected");
-
-  const selectedColor =
-    productCard.querySelector(".store-color.selected");
+  const selectedSize = productCard.querySelector(".size.selected");
 
   if (!selectedSize) {
-    showKarmaNotification(
-      "Selecciona una talla",
-      "Elige una talla antes de continuar."
-    );
-    return;
-  }
 
-  if (!selectedColor) {
-    showKarmaNotification(
-      "Selecciona un color",
-      "Elige un color antes de continuar."
+    alert(
+      "Selecciona una talla antes de agregar la camiseta."
     );
+
     return;
   }
 
   const size = selectedSize.textContent;
-  const color = selectedColor.dataset.selectedColor;
 
   const existingItem = cart.find(
-    item =>
-      item.id === id &&
-      item.size === size &&
-      item.color === color
+    item => item.id === id && item.size === size
   );
 
   if (existingItem) {
+
     existingItem.quantity += 1;
+
   } else {
+
     cart.push({
       ...product,
       size: size,
-      color: color,
       quantity: 1
     });
+
   }
 
   renderCart();
@@ -407,24 +329,13 @@ function renderCart() {
 
     <strong>${item.name}</strong>
 
-   <small>
-  Talla: ${item.size}
-</small>
+    <small>
+      Talla: ${item.size}
+    </small>
 
-<small class="cart-color">
-  <span
-    class="cart-color-dot color-${item.color
-      .toLowerCase()
-      .replace(" ", "-")
-      .replace("kaяma", "karma")}"
-  ></span>
-
-  Color: ${item.color}
-</small>
-
-<small>
-  S/ ${item.price.toFixed(2)}
-</small>
+    <small>
+      S/ ${item.price.toFixed(2)}
+    </small>
 
   </div>
 
@@ -567,21 +478,14 @@ const customerAddress =
 
   cart.forEach((item, index) => {
 
-  message += `${index + 1}. ${item.name}\n`;
-  message += `Talla: ${item.size}\n`;
-  message += `Color: ${item.color}\n`;
-  message += `Cantidad: ${item.quantity}\n`;
-  message += `Precio: S/ ${item.price.toFixed(2)}\n`;
-  message += `Subtotal: S/ ${(item.price * item.quantity).toFixed(2)}\n\n`;
+  message += "👤 DATOS DEL CLIENTE\n";
+  message += `Nombre: ${customerName}\n`;
+  message += `Celular: ${customerPhone}\n`;
+  message += `Dirección: ${customerAddress}\n\n`;
 
-});
+  });
 
-message += "👤 DATOS DEL CLIENTE\n";
-message += `Nombre: ${customerName}\n`;
-message += `Celular: ${customerPhone}\n`;
-message += `Dirección: ${customerAddress}\n\n`;
-
-message += "━━━━━━━━━━━━━━\n";
+  message += "━━━━━━━━━━━━━━\n";
   message += `💰 TOTAL: S/ ${total.toFixed(2)}\n`;
   message += "💳 Método de pago: Yape\n";
   message += "✅ Cliente indica que ya realizó el pago.\n\n";
@@ -658,9 +562,8 @@ const params = new URLSearchParams(window.location.search);
 
 const productId = params.get("producto");
 const productSize = params.get("talla");
-const productColor = params.get("color");
 
-if (productId && productSize && productColor) {
+if (productId && productSize) {
 
   const product = products.find(
     item => item.id === Number(productId)
@@ -671,8 +574,7 @@ if (productId && productSize && productColor) {
     const existingItem = cart.find(
       item =>
         item.id === product.id &&
-        item.size === productSize &&
-        item.color === productColor
+        item.size === productSize
     );
 
     if (existingItem) {
@@ -684,7 +586,6 @@ if (productId && productSize && productColor) {
       cart.push({
         ...product,
         size: productSize,
-        color: productColor,
         quantity: 1
       });
 
@@ -709,20 +610,9 @@ if (productId && productSize && productColor) {
 
 }
 
-
 function openProductPage(productId) {
 
   window.location.href =
     "producto.html?producto=" + productId;
 
 }
-
-window.addEventListener("load", () => {
-  const loader = document.getElementById("pageLoader");
-
-  setTimeout(() => {
-    loader.style.transition = "opacity 0.8s ease, visibility 0.8s ease";
-    loader.style.opacity = "0";
-    loader.style.visibility = "hidden";
-  }, 1400);
-});
