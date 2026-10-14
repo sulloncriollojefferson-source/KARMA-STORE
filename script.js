@@ -1,7 +1,7 @@
 const products = [
   {
     id: 1,
-    name: "Camiseta Oversize 'BUTTERFLY FLAMES'",
+    name: "Kanji Snake Oversized Tee'",
     price: 45.00,
     tag: "CLÁSICO",
     images: [
