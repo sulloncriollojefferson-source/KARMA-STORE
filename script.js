@@ -2,7 +2,7 @@ const products = [
   {
     id: 1,
     name: "Camiseta Oversize 'BUTTERFLY FLAMES'",
-    price: 49.90,
+    price: 45.00,
     tag: "CLÁSICO",
     images: [
       "assets/products/front1.png",
@@ -12,7 +12,7 @@ const products = [
   {
     id: 2,
     name: "Camiseta Oversize 'VORTEX KARMA'",
-    price: 49.90,
+    price: 45.00,
     tag: "ESENCIAL",
     images: [
       "assets/products/front2.png",
@@ -22,7 +22,7 @@ const products = [
   {
     id: 3,
     name: "Camiseta Oversize 'DARK KARMA'",
-    price: 54.90,
+    price: 45.00,
     tag: "NUEVO",
     images: [
       "assets/products/front3.png",
@@ -32,7 +32,7 @@ const products = [
     {
   id: 4,
   name: "Camiseta Oversize 'ETERNAL LOOP'",
-  price: 54.90,
+  price: 45.00,
   tag: "LIMITADO",
   images: [
     "assets/products/front4.png",
@@ -42,7 +42,7 @@ const products = [
 {
   id: 5,
   name: "Camiseta Oversize 'VOID'",
-  price: 49.90,
+  price: 45.00,
   tag: "STREET",
   images: [
     "assets/products/front5.png",
@@ -52,7 +52,7 @@ const products = [
 {
   id: 6,
   name: "Camiseta Oversize 'REBIRTH'",
-  price: 59.90,
+  price: 45.00,
   tag: "PREMIUM",
   images: [
     "assets/products/front6.png",
